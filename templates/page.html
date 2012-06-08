@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Wiki! - {{ title }}</title>
+    </head>
+
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+
+    <body>
+        <nav>
+            {% if user%}
+            <a href="/logout">Log out</a>
+            {% else %}
+            <a href="/login">Log in</a>|<a href="/signup">Sign up</a>
+            {% endif %}
+            <br>
+            <a href="/_history{{ title}}">Edit history</a>
+        </nav>
+		<div class="post">
+			<div class="post-subject">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="post-time">{{ revision.date }}</div>
+			<div class="post-content">{{ revision.body }}</div>
+		</div>
+    </body>
+</html>

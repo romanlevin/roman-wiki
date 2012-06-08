@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ page.title }}</title>
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+	<nav>
+        {% if user%}
+        <a href="/logout">Log out</a>
+        {% else %}
+        <a href="/login">Log in</a>|<a href="/signup">Sign up</a>
+        {% endif %}
+        <br>
+        <a href="/_history{{ title}}">Edit history</a>
+    </nav>
+	{% if not page %}
+	<h1>New page!</h1>
+	<p>This page is empty. Why don't you write something?</p>
+	{% else %}
+	<h1>{{ page.title }}</h1>
+	{% endif %}
+	{% if user %}
+	<form method="post">		
+		<textarea name="content">{{ body }}</textarea>		
+		<input type="submit">
+	</form>
+	{% else %}
+	<div class="error">Please log in to edit the wiki.</div>
+	{% endif %}
+</body>
+</html>

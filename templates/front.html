@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Blog!</title>
+    </head>
+
+    <link rel="stylesheet" href="/style/style.css" type="text/css">
+
+    <body>
+        <h1>Blog!</h1>
+		
+		<hr>
+
+        <navigation>
+            <ul>
+                <li><a href="/newpost" title="New Post">A new post</a></li>
+                <li><a href="/signup" title="User Signup">Sign up!</a></li>
+                {% if user == True %}
+                    <li><a href="/logout" title="User Logout">Log out :(</a></li>
+                {% else %}
+                    <li><a href="/login" title="User Login">Log in!</a></li>
+                {% endif %}
+            </ul>
+        </navigation>
+
+		{% for post in posts %}
+			<div class="post">
+				<div class="post-subject">
+                    <a href="/{{ post.key().id() }}">{{ post.subject }}</a>
+                </div>
+				<div class="post-content">{{ post.content }}</div>
+			</div>
+		{% endfor %}
+        <footer>
+            Queried {{ t_delta }} seconds ago.
+        </footer>
+    </body>
+</html>
