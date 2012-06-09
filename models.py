@@ -49,6 +49,8 @@ class Revision(db.Model):
     def by_page_name(cls, page_name):
         '''Returns all revisions for Page page_name'''
         page = Page.by_name(page_name)
+        if not page:
+            return None
         return cls.all().ancestor(page)
 
     @classmethod

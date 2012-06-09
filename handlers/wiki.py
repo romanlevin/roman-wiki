@@ -7,12 +7,15 @@ class WikiPage(WikiHandler):
     '''Handles regular page requests.'''
     def get(self, page_name):
         revision_id = self.request.get('v')
+        revision = None
         if revision_id:
             revision = Revision.by_id(revision_id, page_name)
         else:
-            revision = Revision.by_page_name(page_name).order('-date').get()
+            revisions = Revision.by_page_name(page_name)
+            if revisions:
+                revision = revisions.order('-date').get()
         if revision:
-            self.render('page.html', title=page_name,
+            self.render('page.jinja', title=page_name,
                         revision=revision,
                         user=self.user)
         else:
@@ -27,7 +30,7 @@ class EditPage(WikiHandler):
         revision_id = self.request.get('v')
         if revision_id:  # if a specific revision is requested
             revision = Revision.by_id(revision_id, page)
-        self.render('edit.html', page=page, revision=revision, user=self.user)
+        self.render('edit.jinja', page=page, revision=revision, user=self.user)
 
     def post(self, page_name):
         page = Page.by_name(page_name)
@@ -50,7 +53,7 @@ class HistoryPage(WikiHandler):
     '''Handles /_history requests.'''
     def get(self, page_name):
         revisions = Revision.by_page_name(page_name).order('-date')
-        self.render('history.html',
+        self.render('history.jinja',
                     title=page_name,
                     revisions=revisions)
 
@@ -58,7 +61,7 @@ class HistoryPage(WikiHandler):
 class Signup(WikiHandler):
     '''Handles /signup requests.'''
     def get(self):
-        self.render("signup.html")
+        self.render("signup.jinja")
 
     def post(self):
         username = self.request.get("username")
@@ -73,7 +76,7 @@ class Signup(WikiHandler):
         if User.by_name(username):
             error = 'That user already exists.'
         if error:
-            self.render("signup.html",
+            self.render("signup.jinja",
                         username=username,
                         email=email,
                         error=error)
@@ -87,7 +90,7 @@ class Signup(WikiHandler):
 class Login(WikiHandler):
     '''Handles /login requests.'''
     def get(self):
-        self.render('login.html')
+        self.render('login.jinja')
 
     def post(self):
         username = self.request.get("username")
@@ -95,7 +98,7 @@ class Login(WikiHandler):
         user = User.login(username, password)
         if not user:
             error = 'Invalid login.'
-            self.render('login.html', username=username, error=error)
+            self.render('login.jinja', username=username, error=error)
         else:
             self.login(user)
             self.redirect('/')

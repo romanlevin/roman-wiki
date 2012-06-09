@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+    <section class="post">
+        <header class="post-title">
+            <h1>{{ title }}</h1>
+        </header>
+        <div class="post-content">{{ revision.body }}</div>
+        <footer class="post-time">{{ revision.date }}</footer>
+    </section>
+    <a href="/_edit{{ title }}">Edit this page.</a>
+{% endblock %}

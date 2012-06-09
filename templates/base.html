@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	{% block head %}
+	<title>{% block title %}{% endblock title%} - Wikiola</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
+	{% endblock head %}
+</head>
+<body>
+	<header>
+		{% block header %}
+			<nav>
+				<div class="login-area">
+				{% if user %}
+					<a href="/logout" class="login-link">Log out</a>
+				{% else %}
+					<a href="/login" class="login-link">Log in</a>|<a href="/signup" class="login-link">Sign up</a>
+				{% endif %}
+				</div>
+				<div class="edit-area">
+					<a href="/_history{{ title }}" class="login-link">Edit history</a>
+				</div>
+			</nav>
+		{% endblock header %}
+	</header>
+	<div class="content">
+		{% block content %}
+
+		{% endblock content %}
+	</div>
+	<footer class="page-footer">
+		{% block footer %}
+		Written by Roman Levin.
+		{% endblock footer %}
+	</footer>
+</body>
+</html>

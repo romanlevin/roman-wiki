@@ -1,24 +1,10 @@
 <!DOCTYPE html>
-<html>
-
-    <head>
-        <title>
-            History - {{ title }}
-        </title>
-    </head>
-    <link rel="stylesheet" href="/static/style.css" type="text/css">
-
-    <body>
-        <nav>
-            {% if user%}
-            <a href="/logout">Log out</a>
-            {% else %}
-            <a href="/login">Log in</a>
-            |
-            <a href="/signup">Sign up</a>
-            {% endif %}
-        </nav>
-        {% for revision in revisions %}
+{% extends "base.html" %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
+{% block content %}
+    {% for revision in revisions %}
         <div class="post">
             <div class="post-id">
                 {{ revision.key().id() }}
@@ -33,7 +19,6 @@
                 <a href="/_edit{{ title }}?v={{ revision.key().id() }}">edit</a>
             </div>
         </div>
-        {% endfor %}
-    </body>
+    {% endfor %}
+{% endblock %}
 
-</html>
