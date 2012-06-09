@@ -1,5 +1,6 @@
 from google.appengine.ext import db
 
+
 class User(db.Model):
     '''
     The user class.
@@ -12,16 +13,16 @@ class User(db.Model):
 
     @classmethod
     def by_id(cls, uid):
-        return User.get_by_id(uid)
+        return cls.get_by_id(uid)
 
     @classmethod
     def by_name(cls, name):
-        user = User.all().filter('username = ', name).get()
+        user = cls.all().filter('username = ', name).get()
         return user
 
     @classmethod
     def register(cls, username, password, email=None):
-        return User(username=username,
+        return cls(username=username,
                     password=password,
                     email=email)
 
@@ -30,6 +31,7 @@ class User(db.Model):
         user = cls.by_name(name)
         if user and user.password == password:
             return user
+
 
 class Revision(db.Model):
     '''
@@ -42,6 +44,21 @@ class Revision(db.Model):
     date = db.DateTimeProperty(auto_now_add=True)
     body = db.TextProperty(required=True)
     user = db.ReferenceProperty(User, required=True)
+
+    @classmethod
+    def by_page_name(cls, page_name):
+        '''Returns all revisions for Page page_name'''
+        page = Page.by_name(page_name)
+        return cls.all().ancestor(page)
+
+    @classmethod
+    def by_id(cls, id, page):
+        '''Returns revision of id for Page page'''
+        id = int(id)  # in case a string was passed.
+        if isinstance(page, str):  # if passed a page name, rather than page.
+            page = Page.by_name(page)
+        return cls.get_by_id(id, page)
+
 
 class Page(db.Model):
     '''

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>History - {{ title }}</title>
-    </head>
 
+    <head>
+        <title>
+            History - {{ title }}
+        </title>
+    </head>
     <link rel="stylesheet" href="/static/style.css" type="text/css">
 
     <body>
@@ -12,14 +13,27 @@
             {% if user%}
             <a href="/logout">Log out</a>
             {% else %}
-            <a href="/login">Log in</a>|<a href="/signup">Sign up</a>
+            <a href="/login">Log in</a>
+            |
+            <a href="/signup">Sign up</a>
             {% endif %}
         </nav>
-
-		{% for revision in revisions %}
-			<div class="post">
-				<div class="post-content">{{ revision.body }}</div>
-			</div>
-		{% endfor %}
+        {% for revision in revisions %}
+        <div class="post">
+            <div class="post-id">
+                {{ revision.key().id() }}
+            </div>
+            <div class="post-content">
+                {{ revision.body }}
+            </div>
+            <div class="post-view-link">
+                <a href="{{ title }}?v={{ revision.key().id() }}">view</a>
+            </div>
+            <div class="post-edit-link">
+                <a href="/_edit{{ title }}?v={{ revision.key().id() }}">edit</a>
+            </div>
+        </div>
+        {% endfor %}
     </body>
+
 </html>
