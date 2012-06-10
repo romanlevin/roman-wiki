@@ -15,7 +15,7 @@ class WikiPage(WikiHandler):
             if revisions:
                 revision = revisions.order('-date').get()
         if revision:
-            self.render('page.jinja', title=page_name,
+            self.render('page.jinja', page_name=page_name,
                         revision=revision,
                         user=self.user)
         else:
@@ -30,7 +30,11 @@ class EditPage(WikiHandler):
         revision_id = self.request.get('v')
         if revision_id:  # if a specific revision is requested
             revision = Revision.by_id(revision_id, page)
-        self.render('edit.jinja', page=page, revision=revision, user=self.user)
+        self.render(
+            'edit.jinja',
+            page_name=page_name,
+            revision=revision,
+            user=self.user)
 
     def post(self, page_name):
         page = Page.by_name(page_name)
