@@ -8,5 +8,5 @@
         <div class="post-content">{{ revision.body }}</div>
         <footer class="post-time">{{ revision.date }}</footer>
     </section>
-    <a href="/_edit{{ page_name }}">Edit this page.</a>
+    <a href="/_edit{{ page_name }}?v={{revision.key().id()}}">Edit this page.</a>
 {% endblock %}
