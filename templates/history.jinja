@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% block title %}
-    {{ title }}
+    History - {{ page_name }}
 {% endblock title %}
 {% block content %}
-    {% for revision in revisions %}
+    {% if revisions %}
+        {% for revision in revisions %}
         <div class="post">
             <div class="post-id">
                 {{ revision.key().id() }}
@@ -19,6 +20,9 @@
                 <a href="/_edit{{ title }}?v={{ revision.key().id() }}">edit</a>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        <div class="error">This page has no edits.</div>
+    {% endif %}
 {% endblock %}
 

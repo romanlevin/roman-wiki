@@ -56,9 +56,11 @@ class EditPage(WikiHandler):
 class HistoryPage(WikiHandler):
     '''Handles /_history requests.'''
     def get(self, page_name):
-        revisions = Revision.by_page_name(page_name).order('-date')
+        revisions = Revision.by_page_name(page_name)
+        if revisions:
+            revisions = revisions.order('-date')
         self.render('history.jinja',
-                    title=page_name,
+                    page_name=page_name,
                     revisions=revisions)
 
 
