@@ -5,7 +5,7 @@
         <header class="post-title">
             <h1>{{ page_name }}</h1>
         </header>
-        <div class="post-content">{{ revision.body }}</div>
+        <div class="post-content">{{ revision.body|safe }}</div>
         <footer class="post-time">{{ revision.date }}</footer>
     </section>
     <a href="/_edit{{ page_name }}?v={{revision.key().id()}}">Edit this page.</a>
