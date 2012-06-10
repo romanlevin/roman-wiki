@@ -1,7 +1,6 @@
 
 import os
 from webapp2 import WSGIApplication, Route
-import handlers
 
 #Jinja2 template directory
 root_dir = os.path.dirname(__file__)
@@ -26,6 +25,9 @@ app = WSGIApplication([
     Route('/logout',
         handler='handlers.wiki.Logout',
         name='logout'),
+    Route('/_search',
+        handler='handlers.wiki.Search',
+        name='Search'),
     Route('/_edit<page_name:' + PAGE_RE + '>',
         handler='handlers.wiki.EditPage',
         name='_edit'),

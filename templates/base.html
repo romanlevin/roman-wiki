@@ -18,6 +18,9 @@
 					<a href="/login" class="login-link">Log in</a>|<a href="/signup" class="login-link">Sign up</a>
 				{% endif %}
 				</div>
+				<form method="post" action="/_search">
+					<input type="text" class="search" name="page" value="" placeholder="Type here to search.">
+				</form>
 				{% if page_name %}
 				<div class="edit-area">
 					<a href="/_history{{ page_name }}" class="login-link">Edit history</a>

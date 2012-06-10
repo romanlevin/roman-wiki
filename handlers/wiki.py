@@ -50,7 +50,7 @@ class EditPage(WikiHandler):
         revision.put()
         page.revision = revision
         page.put()
-        self.redirect(page_name)
+        self.redirect_to('WikiPage', page_name=page_name)
 
 
 class HistoryPage(WikiHandler):
@@ -90,7 +90,7 @@ class Signup(WikiHandler):
             user = User.register(username, password, email)
             user.put()
             self.login(user)
-            self.redirect("/")
+            self.redirect_to('WikiPage', page_name='/')
 
 
 class Login(WikiHandler):
@@ -107,11 +107,21 @@ class Login(WikiHandler):
             self.render('login.jinja', username=username, error=error)
         else:
             self.login(user)
-            self.redirect('/')
+            self.redirect_to('WikiPage', page_name='/')
 
 
 class Logout(WikiHandler):
     '''Handles /logout requests.'''
     def get(self):
         self.logout()
-        self.redirect('/')
+        self.redirect_to('WikiPage', page_name='/')
+
+
+class Search(WikiHandler):
+    '''Handles searches from the search box'''
+    def get(self):
+        self.redirect_to('WikiPage', page_name='/')
+
+    def post(self):
+        page_name = '/' + str(self.request.get('page'))
+        self.redirect_to('WikiPage', page_name=page_name)
