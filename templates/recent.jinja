@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    Recent revisions
+{% endblock title %}
+{% block content %}
+    {% if revisions %}
+    <ul>
+        {% for revision in revisions %}
+            {% set parent = revision.parent() %}
+        <li>
+            <div class="post">
+                <div class="post-parent">
+                    {{ parent.title}}
+                </div>
+                <div class="post-id">
+                    {{ revision.key().id() }}
+                </div>
+                <div class="post-content">
+                    {{ revision.body }}
+                </div>
+                <div class="post-view-link">
+                    <a href="{{ parent.title }}?v={{ revision.key().id() }}">view</a>
+                </div>
+                <div class="post-edit-link">
+                    <a href="/_edit{{ parent.title }}?v={{ revision.key().id() }}">edit</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <div class="error">This page has no edits.</div>
+    {% endif %}
+{% endblock %}
+

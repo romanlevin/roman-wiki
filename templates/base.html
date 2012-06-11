@@ -8,24 +8,26 @@
 	{% endblock head %}
 </head>
 <body>
-	<header>
+	<header class="page-header">
 		{% block header %}
 			<nav>
 				<div class="login-area">
 				{% if user %}
-					<a href="/logout" class="login-link">Log out</a>
+					<a href="/logout" class="header-link">Log out</a>
 				{% else %}
-					<a href="/login" class="login-link">Log in</a>|<a href="/signup" class="login-link">Sign up</a>
+					<a href="/login" class="header-link">Log in</a> | <a href="/signup" class="header-link">Sign up</a>
 				{% endif %}
 				</div>
-				<form method="post" action="/_search">
+				<form method="post" action="/_search" class="search">
 					<input type="text" class="search" name="page" value="" placeholder="Type here to search.">
 				</form>
+				<div class="history-area">
 				{% if page_name %}
-				<div class="edit-area">
-					<a href="/_history{{ page_name }}" class="login-link">Edit history</a>
-				</div>
+					<a href="/_history{{ page_name }}" class="header-link">Edit history</a> | 
 				{% endif %}
+					<a href="/_recent" class="header-link">Recent revisions</a>
+				</div>
+
 			</nav>
 		{% endblock header %}
 	</header>
@@ -36,7 +38,7 @@
 	</div>
 	<footer class="page-footer">
 		{% block footer %}
-		Written by Roman Levin.
+		Written by <a href="https://github.com/romanlevin" title="Link to me on Github">Roman Levin</a>.
 		{% endblock footer %}
 	</footer>
 </body>

@@ -125,3 +125,10 @@ class Search(WikiHandler):
     def post(self):
         page_name = '/' + str(self.request.get('page'))
         self.redirect_to('WikiPage', page_name=page_name)
+
+
+class RecentRevisions(WikiHandler):
+    '''Dispaly recent revisions in a list'''
+    def get(self):
+        revisions = Revision.all().order('-date')
+        self.render('recent.jinja', revisions=revisions)

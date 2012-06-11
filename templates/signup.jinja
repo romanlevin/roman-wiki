@@ -4,27 +4,26 @@ Signup
 {% endblock title %}
 {% block content %}
 	<form method="post">
-	<label>
-		<div>username</div>
-		<input type="text" name="username" value="{{ username }}">
-	</label>
 
-	<label>
-		<div>password</div>
-		<input type="password" name="password" value="">
-	</label>
-
-	<label>
-		<div>verify password</div>
-		<input type="password" name="verify" value="">
-	</label>
-
-	<label>
-		<div>email</div>
-		<input type="email" name="email" value="{{ email }}">
-	</label>
-
-	<div class="error">{{ error }}</div>
+		<ul>
+			<li>
+				<label for="username">username</label>
+				<input type="text" name="username" value="{{ username }}">
+			</li>
+			<li>
+				<label for="password">password</label>
+				<input type="password" name="password" value="">
+			</li>
+			<li>
+				<label for="verify">verify password</label>
+			<input type="password" name="verify" value="">
+			</li>
+			<li>
+				<label for="email">email</label>
+			<input type="email" name="email" value="{{ email }}">
+			</li>
+		</ul>
+		<div class="error">{{ error }}</div>
 
 	<input type="submit">
 {% endblock content %}
