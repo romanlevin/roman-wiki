@@ -132,3 +132,10 @@ class RecentRevisions(WikiHandler):
     def get(self):
         revisions = Revision.all().order('-date')
         self.render('recent.jinja', revisions=revisions)
+
+
+class Index(WikiHandler):
+    '''List all user-created pages'''
+    def get(self):
+        pages = Page.all()
+        self.render('index.jinja', pages=pages)

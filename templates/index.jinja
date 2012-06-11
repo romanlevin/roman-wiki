@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+    Page index
+{% endblock title %}
+{% block content %}
+    {% if pages %}
+    <ul>
+        {% for page in pages %}
+            {% set revision = page.revision%}
+        <li>
+            <div class="post">
+                <div class="post-parent">
+                    {{ page.title}}
+                </div>
+                <div class="post-view-link">
+                    <a href="{{ page.title }}">view</a>
+                </div>
+                <div class="post-edit-link">
+                    <a href="/_edit{{ page.title }}?v={{ revision.key().id() }}">edit</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <div class="error">This page has no edits.</div>
+    {% endif %}
+{% endblock %}
+
