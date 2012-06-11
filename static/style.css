@@ -1,3 +1,7 @@
+/*
+BEGIN RESET
+============================================
+*/
 html, body, div, span,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -33,10 +37,12 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+/*
+============================================
+END RESET*/
 
 body {
-    /*position: relative;*/
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: sans-serif;
     font-size: 1em;
     width: 960px;
     margin: 0 auto;
@@ -44,7 +50,7 @@ body {
     color: #333;
 }
 
-nav {
+.page-header {
     position: absolute;
     background-color: #BBD2DD;
     top: 0;
@@ -61,12 +67,12 @@ section {
 .login-area {
     font-size: 1em;
     color: gray;
-    position: absolute; /*top:  10px;
-    */
-right: 10px;
+    position: absolute;
+    /*top:  10px;*/
+    right: 10px;
 }
 
-.edit-area {
+.history-area {
     font-size: 1em;
     color: gray;
     position: absolute;
@@ -81,16 +87,16 @@ right: 10px;
     border-radius: 1em;
 }
 
-.login-link {
+.header-link {
     color: gray;
     text-decoration: none;
 }
 
-.login-link:visited {
+.header-link:visited {
     color: gray;
 }
 
-.login-link:hover {
+.header-link:hover {
     text-decoration: underline;
 }
 
@@ -110,15 +116,12 @@ label {
     font-size: 20px;
 }
 
-label + label {
-    margin-top: 20px;
-}
 
-input[type=text] {
-    width: 500px;
+input {
+    /*width: 500px;*/
     font-size: 20px;
-    /*padding: 2px;*/
     font-family: monospace;
+    margin: 5px 0 20px 0;
 }
 
 form .search {
@@ -154,9 +157,6 @@ input[type=submit] {
     text-decoration: none;
 }
 
-.post + .post {
-    margin-top: 15px;
-}
 
 .post-title {
     font-size: 24px;
@@ -181,6 +181,16 @@ input[type=submit] {
     color: black;
     bottom: 0;
     right: 0;
+    margin: 0;
     height: 2em;
-    font-size: 12px;
+    font-size: 1em;
+}
+
+.page-footer > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.page-footer > a:hover {
+    text-decoration: underline;
 }
