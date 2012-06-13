@@ -1,196 +1,88 @@
-/*
-BEGIN RESET
-============================================
-*/
-html, body, div, span,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-img, ins, kbd, q, s, samp,
-small, strike, strong,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+
+/*swatch colors (Stolen from Onextrapixel)
+-------------
+13437a - dark blue
+1d74be - mid blue
+e1e1e1 - light gray
+a3a4a4 - mid gray
+8a8a8a - gray
+======== */
+
+/* GENERAL*/
+
+html {
+    background-color: #1d74be;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-/*
-============================================
-END RESET*/
-
 body {
-    font-family: sans-serif;
-    font-size: 1em;
-    width: 960px;
     margin: 0 auto;
-    padding: 10px;
-    color: #333;
+    font: 1em/1.5em sans-serif;
 }
 
-.page-header {
-    position: absolute;
-    background-color: #BBD2DD;
-    top: 0;
-    width: 960px;
-    height: 2em;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-}
-
-section {
-    margin: 0;
-}
-
-.login-area {
-    font-size: 1em;
-    color: gray;
-    position: absolute;
-    /*top:  10px;*/
-    right: 10px;
-}
-
-.history-area {
-    font-size: 1em;
-    color: gray;
-    position: absolute;
-    left: 10px;
-}
-
-.content {
-    position: relative;
-    top: 5em;
-    padding: 1em;
-    border: 1px solid #999;
-    border-radius: 1em;
-}
-
-.header-link {
-    color: gray;
-    text-decoration: none;
-}
-
-.header-link:visited {
-    color: gray;
-}
-
-.header-link:hover {
-    text-decoration: underline;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: bold;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-}
-
-.error {
-    color: red;
-}
-
-label {
-    display: block;
-    font-size: 20px;
-}
-
-
-input {
-    /*width: 500px;*/
-    font-size: 20px;
-    font-family: monospace;
-    margin: 5px 0 20px 0;
-}
-
-form .search {
-    position: absolute;
-    right: 400px;
-    width: 200px;
-    font-size: 1em;
-}
-
-/*input[type=text] .search {
-    width: 200px;
-    font-size: 1em;
-}*/
-
-textarea {
-    width: 500px;
-    height: 400px;
-    font-size: 28px;
-    font-family: monospace;
-}
-
-input[type=submit] {
-    font-size: 24px;
-}
-
-.main-title {
-    display: block;
-    color: #222;
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
-    text-decoration: none;
-}
-
-
-.post-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-
-.post-time {
-    position: static;
-    right: 0;
-    bottom: 0;
-    color: #999;
-}
-
-.post-content {
-    margin: 20px 0;
-}
-
-.page-footer {
-    position: absolute;
+a {
     color: black;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    height: 2em;
-    font-size: 1em;
 }
 
-.page-footer > a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.page-footer > a:hover {
+a:hover {
     text-decoration: underline;
+}
+
+
+ /* HEADER */
+
+header {
+    background-color: #e1e1e1;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    height: 8em;
+    position: relative;
+}
+
+header hgroup {
+    /*margin: 0 auto;*/
+    border-right: 1px solid #fff;
+    display: inline-block;
+    width: 400px;
+    /*padding: 0 0.5em 0 0;*/
+}
+
+header hgroup h1 {
+    font-size: 400%;
+    margin: 0.5em 0;
+}
+
+header hgroup h2 {
+    font-size: 300%;
+}
+
+header nav {
+    position: relative;
+    color: black;
+    width: 100%;
+    height: 100%;
+    /*display: inline-block;*/
+}
+
+.index, .search, .login{
+    position: absolute;
+}
+.index {
+    left: 5em
+}
+.search {
+    left: 10em
+}
+.login {
+    right: 5em
+}
+
+/* CONTENT */
+article {
+    background-color: #8a8a8a;
+}
+
+article header{
+    font-weight: bold;
+    font-size: 300%;
+    margin: 1em 0;
 }
