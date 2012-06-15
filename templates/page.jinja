@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 {% block title %}{{ page_name }}{% endblock title %}
 {% block content %}
-    <section class="post">
-        <header class="post-title">
-            <h1>{{ page_name }}</h1>
-        </header>
-        <div class="post-content">{{ revision.body|safe }}</div>
-        <footer class="post-time">{{ revision.date }}</footer>
-    </section>
-    <a href="/_edit{{ page_name }}?v={{revision.key().id()}}">Edit this page.</a>
+	<article class='grid_8'>
+		<header>
+			<h1>{{ page_name }}</h1>
+		</header>
+		<div class='page-body'>
+			{{ revision.body|safe }}
+		</div>
+		<footer>
+			<time pubdate>
+				{{ revision.date }}
+			</time>
+			<span>
+				<a href="/_edit{{ page_name }}?v={{revision.key().id()}}">edit this page</a>
+			</span>
+		</footer>
+	</article>
+	<aside class='grid_4'>
+		<section>
+			<h1><a href="/_history{{ page_name }}">Recent Changes</a></h1>
+			<ul></ul>
+		</section>
+    </aside>
 {% endblock %}
