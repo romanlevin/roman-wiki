@@ -15,17 +15,17 @@
 <body>
 	{% block header %}
 	<header class='container_12'>
-		<h1 class='grid_4'><a href="/" title="go to root">Wikiola</a></h1>
+		<h1 class='grid_3'><a href="/" title="go to root">Wikiola</a></h1>
 		</hgroup>
-		<nav>
-			<ul class="index grid_3">
+		<nav class='grid_9'>
+			<ul class="index">
 				<li><a href="/_recent" class="header-link">Recent revisions</a></li>
 				<li><a href="/_index" class="header-link">Index</a></li>
 			</ul>
-			<form method="post" action="/_search" class="search grid_3">
+			<form method="post" action="/_search" class="search">
 				<input type="text" name="page" value="" placeholder="Type here to search.">
 			</form>
-			<ul class='login grid_2'>
+			<ul class='login push_1'>
 			{% if user %}
 				<li><a href="/logout" class="header-link">Log out</a></li>
 			{% else %}
