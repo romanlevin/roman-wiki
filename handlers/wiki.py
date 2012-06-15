@@ -6,6 +6,10 @@ from models import Page, User, Revision
 class WikiPage(WikiHandler):
     '''Handles regular page requests.'''
     def get(self, page_name):
+        revisions = Revision.by_page_name(page_name)
+        if revisions:
+            revisions = revisions.order('-date')
+
         revision_id = self.request.get('v')
         revision = None
         if revision_id:
@@ -17,7 +21,8 @@ class WikiPage(WikiHandler):
         if revision:
             self.render('page.jinja', page_name=page_name,
                         revision=revision,
-                        user=self.user)
+                        user=self.user,
+                        revisions=revisions)
         else:
             self.redirect_to('_edit', page_name=page_name)
 
@@ -34,7 +39,8 @@ class EditPage(WikiHandler):
             'edit.jinja',
             page_name=page_name,
             revision=revision,
-            user=self.user)
+            user=self.user,
+            page=page)
 
     def post(self, page_name):
         page = Page.by_name(page_name)
@@ -61,7 +67,8 @@ class HistoryPage(WikiHandler):
             revisions = revisions.order('-date')
         self.render('history.jinja',
                     page_name=page_name,
-                    revisions=revisions)
+                    revisions=revisions,
+                    user=self.user)
 
 
 class Signup(WikiHandler):

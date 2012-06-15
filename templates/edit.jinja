@@ -10,7 +10,7 @@
 	{% endif %}
 	{% if user %}
 		<form method="post">
-			<textarea name="content">{{ revision.body }}</textarea>
+			<textarea name="content" class='grid_12'>{{ revision.body }}</textarea>
 			<input type="submit">
 		</form>
 	{% else %}

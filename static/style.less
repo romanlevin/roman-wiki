@@ -25,7 +25,7 @@ body > header {
 	background-color: @header_color;
 	border-radius: 5px;
 	height: 75px;
-	position: relative;
+	// position: relative;
 
 	.pop();
 
@@ -38,15 +38,13 @@ body > header {
 		a {color: @section_color;}
 	}
 
-	nav {
-		margin: 20px 0;
-	}
 }
 
 .index, .search, .login {
-	margin-top: 20px;
+	margin-top: 30px;
 	height: 40px;
 	display: inline;
+	padding: 0;
 
 	// background-color: @section_color;
 	// border-radius: 5px;
@@ -63,20 +61,25 @@ body > header {
 
 	}
 
+	li + li {
+		margin: 0 10px;
+	}
+
 	li:hover {
 		background-color: @section_color*0.8;
 	}
 }
 
 .search input{
-	margin: 10px 0 0 35px;
+	// margin: 10px 0 0 35px;
 	border-radius: 5px;
 	-webkit-transition: all 0.30s ease-in-out;
 	outline: none;
 	padding: 3px 0px 3px 3px;
 	border: 1px solid #DDDDDD;
+	margin: 0 0 10px 30px;
 
-	
+
 }
 
 .search input:focus {
@@ -149,4 +152,19 @@ body > footer {
 	background-color: @aside_color;
 	border-radius: 5px;
 	.pop(#000);
+}
+
+.striped {
+	display: block;
+
+	li {
+	background-color: @section_color;
+	display: block;
+	margin: 1em 0;
+	}
+
+}
+
+textarea {
+	height: 10em
 }
