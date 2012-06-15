@@ -20,7 +20,17 @@
 	<aside class='grid_4'>
 		<section>
 			<h1><a href="/_history{{ page_name }}">Recent Changes</a></h1>
-			<ul></ul>
+			{% if revisions %}
+			<ul>
+				{% for rev in revisions %}
+				<li>
+					<a href="{{ page_name }}?v={{ rev.key().id() }}">
+						{{ rev.body|truncate(50) }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
 		</section>
     </aside>
 {% endblock %}

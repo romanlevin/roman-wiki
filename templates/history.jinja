@@ -4,22 +4,18 @@
 {% endblock title %}
 {% block content %}
     {% if revisions %}
-    <ul>
+    <ul class='striped grid_12'>
         {% for revision in revisions %}
-        <li><div class="post">
-            <div class="post-id">
+        <li class=''>
+            <div class="post-id grid_3">
                 {{ revision.key().id() }}
             </div>
             <div class="post-content">
-                {{ revision.body }}
+                {{ revision.body|truncate }}
             </div>
-            <div class="post-view-link">
-                <a href="{{ title }}?v={{ revision.key().id() }}">view</a>
-            </div>
-            <div class="post-edit-link">
-                <a href="/_edit{{ title }}?v={{ revision.key().id() }}">edit</a>
-            </div>
-        </div></li>
+            <a class= 'post-view-link' href="{{ page_name }}?v={{ revision.key().id() }}">view</a>
+            <a class="post-edit-link" href="/_edit{{ title }}?v={{ revision.key().id() }}">edit</a>
+        </li>
         {% endfor %}
     </ul>
     {% else %}

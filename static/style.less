@@ -3,6 +3,9 @@
 @section_color: #888;
 @aside_color: #aaa;
 
+.pop(@color: @aside_color) {
+	box-shadow: 1px 1px 0 @color;
+}
 body {
 	background-color: @bg_color;
 }
@@ -12,37 +15,84 @@ li {
 	list-style-type: none;
 }
 
+a {
+			color: @header_color;
+			text-decoration: none;
+}
 
 body > header {
 	margin-top: 20px;
 	background-color: @header_color;
 	border-radius: 5px;
 	height: 75px;
+	// position: relative;
 
-	box-shadow: 1px 1px 0 @aside_color;
+	.pop();
 
 	h1 {
 		text-align: center;
-		margin-top: 20px;
+		font-size: 300%;
+		margin-top: 10px;
+		text-shadow: 1px 1px 0 #000;
+
+		a {color: @section_color;}
 	}
+
 }
 
 .index, .search, .login {
-	margin-top: 20px;
+	margin-top: 30px;
 	height: 40px;
+	display: inline;
+	padding: 0;
 
-	background-color: @section_color;
-	border-radius: 5px;
+	// background-color: @section_color;
+	// border-radius: 5px;
+}
+
+.index, .login {
+	li{
+		display: inline;
+		background-color: @section_color;
+		padding: 0.5em;
+		border-radius: 5px;
+		.pop(@bg_color);
+		-webkit-transition: all 0.3s ease-in-out;
+
+	}
+
+	li + li {
+		margin: 0 10px;
+	}
+
+	li:hover {
+		background-color: @section_color*0.8;
+	}
 }
 
 .search input{
-	margin: 10px 0 0 35px;
+	// margin: 10px 0 0 35px;
+	border-radius: 5px;
+	-webkit-transition: all 0.30s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	border: 1px solid #DDDDDD;
+	margin: 0 0 10px 30px;
+
+
+}
+
+.search input:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	border: 1px solid rgba(81, 203, 238, 1);
 }
 
 .content {
 	margin-top: 25px;
 	border-radius: 5px;
 	background-color: @header_color;
+	.pop();
+
 }
 
 article {
@@ -62,7 +112,7 @@ article {
 	background-color: @section_color;
 	border-radius: 5px;
 
-	box-shadow: 1px 1px 0 @bg_color;
+	.pop(@bg_color);
 
 	.page-body {
 		margin: 20px 20px 20px 20px;
@@ -89,7 +139,7 @@ aside {
 	margin: 25px 0 25px 0;
 	border-radius: 5px;
 
-	box-shadow: 1px 1px 0 @bg_color;
+	.pop(@bg_color);
 
 	h1 {
 		text-align: center;
@@ -101,4 +151,20 @@ body > footer {
 	margin-top: 20px;
 	background-color: @aside_color;
 	border-radius: 5px;
+	.pop(#000);
+}
+
+.striped {
+	display: block;
+
+	li {
+	background-color: @section_color;
+	display: block;
+	margin: 1em 0;
+	}
+
+}
+
+textarea {
+	height: 10em
 }
